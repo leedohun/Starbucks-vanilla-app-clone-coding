@@ -33,3 +33,11 @@ window.addEventListener('scroll', _.throttle(function () {  // _.throttle(functi
 }, 300)); // _.throttle(함수, 시간)
 
 
+const fadeEls = document.querySelectorAll('.visual .fade-in');
+fadeEls.forEach(function (fadeEl, index) {                  // HTML의 visual fade-in Class를 각각 가져와서 실행
+  gsap.to(fadeEl, 1, {
+    delay: (index + 1) * .7,
+    opacity: 1,
+  });
+});
+

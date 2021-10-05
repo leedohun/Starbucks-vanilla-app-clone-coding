@@ -18,6 +18,57 @@ a {
   margin: 0 auto;                           /*수평 가운데 정렬*/
   position: relative;                       /*요소의 위치 지정: 요소 자신을 기준*/
 }
+.btn {                                      /*기본적인 btn 설정*/
+  width: 130px;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;                       /*가운데 정렬*/
+  cursor: pointer;                          /*커서 올라가면 커서 변경*/
+  box-sizing: border-box;                   /*padding + margin + border = (weight, height)*/
+  display: block;
+  transition: .4s;
+}
+.btn:hover {                                /*커서 올라가면 효과*/
+  background-color: #333;
+  color: #FFF;
+}
+.btn.btn--reverse {                         /*BEM : 상태표시*/
+  background-color: #333;
+  color: #FFF;
+}
+.btn.btn--reverse:hover {
+  background-color: #FFF;
+  color: #333;
+}
+.btn.btn--brown {
+  color: #592B18;
+  border-color: #592B18;
+}
+.btn.btn--brown:hover {
+  color: #FFF;
+  background-color: #592B18;
+}
+.btn.btn--gold {
+  color: #D9AA8A;
+  background-color: #D9AA8A;
+}
+.btn.btn--gold:hover {
+  color: #FFF;
+  background-color: #D9AA8A;
+}
+.btn.btn--white {
+  color: #FFF;
+  border-color: #FFF;
+}
+.btn.btn.btn--white:hover {
+  color: #333;
+  background-color: #FFF;
+}
+
 
 
 /* HEADER */
@@ -25,10 +76,11 @@ header {
   width: 100%;
   background-color: #f6f5f0;          /*haeder 배경 색상*/
   border-bottom: 1px solid #c8c8c8;   /*bottom에 선 추가*/
-
   /*화면 상단에 고정*/
   position: fixed;
   top: 0;
+
+  z-index: 9;                           /*우선 순위 부여*/
 }
 header > .inner {                       /*header의 자식 요소인 inner Class*/
   height: 120px;                        /*세로 너비*/
@@ -129,7 +181,6 @@ header .main-menu {                                 /*Main-Menu*/
   display: flex;                                    /*수평 구조*/
 }
 header .main-menu .item {
-
 }
 header .main-menu .item .item__name {               /*Main-Menu의 item Class의 item__name Class*/
   padding: 10px 20px 34px 20px;                     /*여백 설정*/
@@ -205,4 +256,58 @@ header .badges .badge {                           /*bages Class의 badge*/
   margin-bottom: 12px;                            /*여백 추가*/
   box-shadow: 4px 4px 10px rgba(0, 0, 0, .15);  /*그림자 추가*/
   cursor: pointer;                                /*마우스 커서 올라가 있는 동안 poniter로 변경*/
+}
+
+
+/*VISUAL*/
+.visual {
+  margin-top: 120px;                                  /*header의 inner Class의 높이 값*/
+  background-image: url("../images/visual_bg.jpg");   /*배경 이미지*/
+  background-position: center;                        /*배경 가운데 정렬*/
+}
+.visual .inner {                                      /*기본 inner Class에 position:relative 값이 있다.*/
+  height: 646px;
+}
+.visual .title {
+  position: absolute;
+  top: 88px;
+  left: -10px;
+}
+.visual .title .btn {
+  position: absolute;
+  top: 259px;
+  left: 173px;
+}
+.visual .cup1.image {   /*일치 선택자*/
+  /*부모 요소를 기준으로 위치 설정*/
+  position: absolute;
+  bottom: 0;
+  right: -47px;
+}
+.visual .cup1.text {
+  /*부모 요소를 기준으로 위치 설정*/
+  position: absolute;
+  top: 38px;
+  right: 171px;
+}
+.visual .cup2.image {
+  /*부모 요소를 기준으로 위치 설정*/
+  position: absolute;
+  bottom: 0;
+  right: 162px;
+}
+.visual .cup2.text {
+  /*부모 요소를 기준으로 위치 설정*/
+  position: absolute;
+  top: 321px;
+  right: 416px;
+}
+.visual .spoon {
+  /*부모 요소를 기준으로 위치 설정*/
+  position: absolute;
+  bottom: 0;
+  left: 275px;
+}
+.visual .fade-in {
+  opacity: 0;
 }
