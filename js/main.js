@@ -17,6 +17,8 @@ searchInputEl.addEventListener('blur', function () {        // searchInputEl에 
 
 
 const badgeEl = document.querySelector('header .badges');   // brower 창을 의미
+const toTopEl = document.querySelector('#to-top');
+
 window.addEventListener('scroll', _.throttle(function () {  // _.throttle(function () {}, 300) : 0.3초 단위로 함수를 실행 (제한을 걸음.)
   console.log(window.scrollY);
   if (window.scrollY > 500) {                               // windows.scrollY : 화면의 위치
@@ -24,13 +26,28 @@ window.addEventListener('scroll', _.throttle(function () {  // _.throttle(functi
       opacity: 0,
       display: 'none',
     }); // gsap.to(요소, 지속시간, 옵션);
+    gsap.to(toTopEl, .2, {
+      x: 0,
+    });
   } else {
     gsap.to(badgeEl, .6, {                                  // gsap : JS에서 애니메이션을 넣을 때 사용
       opacity: 1,
       display: 'block',
     });
+    gsap.to(toTopEl, .2, {
+      x: 100,
+    });
   }
 }, 300)); // _.throttle(함수, 시간)
+
+
+
+toTopEl.addEventListener('click', function () {
+  gsap.to(window, .7, {
+    scrollTo: 0,
+  })
+})
+
 
 
 const fadeEls = document.querySelectorAll('.visual .fade-in');
