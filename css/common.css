@@ -1,0 +1,361 @@
+/* COMMON */
+body {
+  color: #333;                            /*기본 글자 색상*/
+  font-size: 16px;                          /*기본 글자 크기*/
+  font-weight: 400;                         /*기본 글자 두께*/
+  line-height: 1.4;                         /*기본 행간 크기*/
+  font-family: 'Nanum Gothic', sans-serif;  /*나눔 고딕 서체 적용*/
+}
+img {
+  display: block;                           /*img 모두 inline-->block 변경 처리*/
+}
+a {
+  text-decoration: none;                    /*a 태그의 기본 적용 데코(밑줄) 삭제*/
+}
+.inner {                                    /*inner Class의 setting*/
+  width: 1100px;                            /*세로 너비*/
+  margin: 0 auto;                           /*수평 가운데 정렬*/
+  position: relative;                       /*요소의 위치 지정: 요소 자신을 기준*/
+}
+.btn {                                      /*기본적인 btn 설정*/
+  width: 130px;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;                       /*가운데 정렬*/
+  cursor: pointer;                          /*커서 올라가면 커서 변경*/
+  box-sizing: border-box;                   /*padding + margin + border = (weight, height)*/
+  display: block;
+  transition: .4s;
+}
+.btn:hover {                                /*커서 올라가면 효과*/
+  background-color: #333;
+  color: #FFF;
+}
+.btn.btn--reverse {                         /*BEM : 상태표시*/
+  background-color: #333;
+  color: #FFF;
+}
+.btn.btn--reverse:hover {
+  background-color: #FFF;
+  color: #333;
+}
+.btn.btn--brown {
+  color: #592B18;
+  border-color: #592B18;
+}
+.btn.btn--brown:hover {
+  color: #FFF;
+  background-color: #592B18;
+}
+.btn.btn--gold {
+  color: #D9AA8A;
+  border-color: #D9AA8A;
+}
+.btn.btn--gold:hover {
+  color: #FFF;
+  background-color: #D9AA8A;
+}
+.btn.btn--white {
+  color: #FFF;
+  border-color: #FFF;
+}
+.btn.btn--white:hover {
+  color: #333;
+  background-color: #FFF;
+}
+.back-to-position {
+  opacity: 0;
+  transition: 1s;
+}
+.back-to-position.to-right {
+  transform: translateX(-150px);
+}
+.back-to-position.to-left {
+  transform: translateX(150px);
+}
+.show .back-to-position {
+  opacity: 1;
+  transform: translateX(0);
+}
+.show .back-to-position.delay-0 {
+  transition-delay: 0s;
+}
+.show .back-to-position.delay-1 {
+  transition-delay: .3s;
+}
+.show .back-to-position.delay-2 {
+  transition-delay: .6s;
+}
+.show .back-to-position.delay-3 {
+  transition-delay: .9s;
+}
+
+
+
+/* HEADER */
+header {
+  width: 100%;
+  background-color: #f6f5f0;          /*haeder 배경 색상*/
+  border-bottom: 1px solid #c8c8c8;   /*bottom에 선 추가*/
+  /*화면 상단에 고정*/
+  position: fixed;
+  top: 0;
+
+  z-index: 9;                           /*우선 순위 부여*/
+}
+header > .inner {                       /*header의 자식 요소인 inner Class*/
+  height: 120px;                        /*세로 너비*/
+}
+header .logo {
+  height: 75px;                         /*Logo Class의 세로 너비*/
+  position: absolute;                   /*요소의 위치 지정: 위치 상 부모 요소를 기준*/
+
+  /*수직 가운데 배치*/
+  top: 0;
+  bottom: 0;
+  left: 0;                              /*부모를 기준으로 왼쪽에 있다.*/
+  margin: auto;
+}
+header .sub-menu {
+  position: absolute;                   /*요소의 위치 지정: 위치 상 부모 요소를 기준*/
+  display: flex;
+
+  /*오른쪽 정렬*/
+  top: 10px;
+  right: 0;
+}
+header .sub-menu ul.menu {                          /*Sub-Menu의 Menu*/
+  font-family: Arial, sans-serif;                   /*기본 폰트 설정*/
+  display: flex;                                    /*수직-->수평 변경*/
+}
+header .sub-menu ul.menu li {
+  position: relative                                /*요소의 위치 지정: 요소 자신을 기준*/
+}
+header .sub-menu ul.menu li::before {               /*가상 요소 선택자*/
+  content: "";                                      /*필수 요소*/
+  
+  /*구분선 생성*/
+  width: 1px;
+  height: 12px;
+  background-color: #e5e5e5;
+  position: absolute;                               /*요소의 위치 지정: 위치 상 부모 요소를 기준*/
+  
+  /*수직 가운데 정렬*/
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+header .sub-menu ul.menu li:first-child::before {   /*Sub-Menu의 Menu의 첫 번째 요소의 가상 요소*/
+  display: none;                                    /*보이지 않게 처리*/
+}
+header .sub-menu ul.menu li a {                     /*Sub-Menu의 Menu*/
+  font-size: 12px;                                  /*글자 크기*/
+  padding: 11px 16px;                               /*여백 추가*/
+  display: block;                                   /*inline-->block 변경 처리*/
+  color: #656565;                                 /*글자 색*/
+}
+header .sub-menu ul.menu li a:hover {               /*가상 클래스 선택자*/
+  color: #000                                     /*Sub-Menu의 Menu 마우스 커서가 올라가 있는 동안 글자 색 변경*/
+}
+header .sub-menu .search {                          /*Sub-Menu Search Class 부분*/
+  height: 34px;
+  position: relative;                               /*요소의 위치 지정: 요소 자신을 기준*/
+}
+header .sub-menu .search input {                    /*Sub-Menu Search Class 사용자 입력 부분*/
+  width: 36px;
+  height: 34px;
+  padding: 4px 10px;
+  border: 1px solid #ccc;                         /*테두리 크기, 종류, 색*/
+  box-sizing: border-box;                           /*요소의 크기 계산 기준: 요소의 내용 + padding + border*/
+  border-radius: 5px;                               /*요소의 모서리를 깎음*/
+  outline: none;
+  background-color: #fff;
+  color:#777;
+  transition: width .4s;                            /*전환 효과 적용*/
+}
+header .sub-menu .search input:focus {              /*Sub-Menu Search Class 가상 클래스 선택자*/
+  width: 190px;
+  border-color: #669900;                          /*테두리 선 색*/
+}
+header .sub-menu .search .material-icons{           /*Sub-Menu Search Class 돋보기 Icon*/
+  height: 24px;
+  position: absolute;                               /*요소의 위치 지정: 위치 상 부모 요소를 기준*/
+
+  /*수직 가운데 정렬*/
+  top: 0;
+  bottom: 0;
+  right: 5px;
+  margin: auto;
+  transition: .4s;                                  /*전환 효과 적용*/
+}
+header .sub-menu .search.focused .material-icons{   /*Sub-Menu Search Class Focused Class 돋보기 Icon*/
+  opacity: 0;                                       /*요소 투명도*/
+}
+
+header .main-menu {                                 /*Main-Menu*/
+  /*우측 하단 정렬*/
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  z-index: 1;                                       /*display 우선순위*/
+  display: flex;                                    /*수평 구조*/
+}
+header .main-menu .item {
+}
+header .main-menu .item .item__name {               /*Main-Menu의 item Class의 item__name Class*/
+  padding: 10px 20px 34px 20px;                     /*여백 설정*/
+  font-family: Arial, sans-serif;                   /*기본 글꼴 설정*/
+  font-size: 13px;
+}
+header .main-menu .item:hover .item__name {         /*item:hover --> item__name, contents 둘 다 영향이 가기 때문에*/
+  background-color: #2c2a29;
+  color: #669900;
+  border-radius: 6px 6px 0px 0px;                   /*모서리를 깍음*/
+}
+header .main-menu .item .item__contents {           /*Main-Menu의 item Class의 item_contents Class*/
+  width: 100%;
+  position: fixed;                                  /*view port 기준으로 fixed*/
+  left: 0;
+  display: none;
+}
+header .main-menu .item:hover .item__contents {     /*가상 클래스 선택자 - 마우스 커서가 올라가 있을 때*/
+  display: block;
+}
+header .main-menu .item .item__contents .contents__menu {
+  background-color: #2c2a29;
+}
+header .main-menu .item .item__contents .contents__menu > ul {              /*Main-Menu의 content__menu의 자식 ul 태크*/
+  display: flex;                                                            /*수평 구조*/
+  flex-wrap: wrap;                                                          /*줄 바꿈*/
+  padding: 20px 0;                                                          /*여백 지정*/
+}
+header .main-menu .item .item__contents .contents__menu > ul > li {         /*Main-Menu의 content__menu의 자식 ul 태크의 자식 li 태크*/
+  width: 220px;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li h4 a {      /*Main-Menu의 content__menu의 자식 ul 태크의 자식 li 태크 안에 있는 h4 태그*/
+  padding: 3px 0 12px 0;
+  font-size: 14px;
+  color: #fff;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li ul li a {   /*Main-Menu의 content__menu의 자식 ul 태크의 자식 li 태크 안에 있는 ul 태그의 자식 li 태그*/
+  padding: 5px 0;
+  font-size: 12px;
+  color: #999;
+  cursor: pointer;                                                          /*요소에 마우스를 가져다 될때 포인터 모양으로 변경됨*/
+}
+header .main-menu .item .item__contents .contents__menu > ul > li ul li a:hover {
+  color:#669900
+}
+header .main-menu .item .item__contents .contents__texture {                /*Main-Menu의 contents_texture Class*/
+  padding: 26px 0;
+  font-size: 12px;
+  background-image: url("../images/main_menu_pattern.jpg");
+}
+header .main-menu .item .item__contents .contents__texture h4 a {             /*Main-Menu의 contents_texture Class의 자식 h4 태그*/
+  display: flex;
+  color: #999;
+  font-weight: 700;
+}
+header .main-menu .item .item__contents .contents__texture h4 a img {
+  padding: 0 5px;
+  display: flex;
+}
+header .main-menu .item .item__contents .contents__texture p {              /*Main-Menu의 contents_texture Class의 자식 p 태그*/
+  color: #669900;
+  margin: 4px 0 14px;
+}
+
+header .badges {          /*badges Class의 기본 Setting*/
+  position: absolute;
+  top: 132px;
+  right: 12px;
+}
+header .badges .badge {                           /*bages Class의 badge*/
+  border-radius: 10px;                            /*둥글게 깎음*/
+  overflow: hidden;                               /*넘치는 부분 숨김*/
+  margin-bottom: 12px;                            /*여백 추가*/
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, .15);  /*그림자 추가*/
+  cursor: pointer;                                /*마우스 커서 올라가 있는 동안 poniter로 변경*/
+}
+
+
+
+
+
+/* FOOTER */
+footer {
+  background-color: #272727;
+  border-top: 1px solid #333;
+}
+footer .inner {
+  padding: 40px 0 60px 0;
+}
+footer .menu {
+  display: flex;
+  justify-content: center;
+}
+footer .menu li {
+  position: relative;
+}
+footer .menu li::before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  background-color: #555;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -1px;
+  margin: auto;
+}
+footer .menu li:last-child::before {
+  display: none;
+}
+footer .menu li a {
+  color: #ccc;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 15px;
+  display: block;
+}
+footer .menu li a.green {
+  color: #669900;
+}
+footer .btn-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+footer .btn-group .btn {
+  font-size: 12px;
+  margin-right: 10px;
+}
+footer .btn-group .btn:last-child {
+  margin-right: 0;
+}
+footer .info {
+  margin-top: 30px;
+  text-align: center;
+}
+footer .info span {
+  margin-right: 20px;
+  color: #999;
+  font-size: 12px;
+}
+footer .info span:last-child {
+  margin-right: 0;
+}
+footer .copyright {
+  color: #999;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 12px;
+}
+footer .logo {
+  margin: 30px auto 0;    /*img 요소가 diskplay:block; + margin: 0 auto; 인 경우, width 속서이 없이도 가운데 정렬이 가능*/
+}
